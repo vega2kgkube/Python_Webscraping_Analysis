@@ -12,3 +12,4 @@ exit;
 mysql -u python -p
 show grants for current_user;
 use python_db;
+show tables;
