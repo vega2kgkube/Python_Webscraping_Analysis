@@ -1,9 +1,17 @@
 # module_usage.py
-import datetime
+# 1
+#import datetime
+# 2
+from datetime import datetime
+
 import random
 
 # datetime 모듈 사용
-now = datetime.datetime.now()
+#1
+#now = datetime.datetime.now()
+#2
+now = datetime.now()
+
 print(f"현재 날짜와 시간: {now.strftime('%Y-%m-%d %H:%M:%S')}")
 print(f"포맷된 날짜: {now.strftime('%Y년 %m월 %d일 %A')}")
 
