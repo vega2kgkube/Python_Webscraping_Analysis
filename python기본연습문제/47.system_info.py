@@ -12,7 +12,7 @@ print(f"Python 버전: {sys.version}")
 # 운영체제 정보
 print(f"운영체제: {os.name}")
 
-# 환경 변수
+# PATH 환경 변수의 값을 가져오기
 path_env = os.environ.get('PATH', '')
 print(f"환경 변수 PATH 일부: {path_env[:50]}...")
 

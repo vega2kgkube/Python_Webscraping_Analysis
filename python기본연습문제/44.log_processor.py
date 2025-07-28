@@ -8,7 +8,8 @@ log_entries = [
     "2025-07-20 10:30:00 - ERROR - 데이터베이스 연결 실패",
     "2025-07-20 11:00:00 - INFO - 사용자 로그인",
     "2025-07-20 11:45:00 - ERROR - 파일을 찾을 수 없음",
-    "2025-07-20 12:00:00 - WARNING - 디스크 공간 부족"
+    "2025-07-20 12:00:00 - WARNING - 디스크 공간 부족",
+    "2025-07-20 12:00:00 - DEBUG - 변수값 출력"
 ]
 
 # 로그 파일 생성
@@ -23,6 +24,7 @@ def filter_logs_by_level(filename, level):
     filtered_logs = []
     with open(filename, 'r', encoding='utf-8') as file:
         for line in file:
+            # file에서 읽은 한 줄 문자열에 아규먼트로 전달 받은 로그레벨 문자열이 있는냐? 
             if level in line:
                 filtered_logs.append(line.strip())
     return filtered_logs
@@ -34,7 +36,7 @@ for log in error_logs:
     print(log)
 
 # WARNING 로그 필터링  
-warning_logs = filter_logs_by_level('application.log', 'WARNING')
+warning_logs = filter_logs_by_level('application.log', 'DEBUG')
 print(f"\nWARNING 레벨 로그들:")
 for log in warning_logs:
     print(log)
