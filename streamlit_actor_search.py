@@ -1,10 +1,12 @@
+# streamlit run streamlit_actor_search.py
+
 import streamlit as st
 import pandas as pd
 
 # 데이터 로드
 @st.cache_data
 def load_data():
-    df = pd.read_csv('netflix_titles.csv')
+    df = pd.read_csv('data/netflix_titles.csv')
     df['cast'] = df['cast'].fillna('No Data')
     return df
 
