@@ -5,5 +5,5 @@ data/*.json
 data/*.xlsx
 img/
 #img.html
-*.jpg
+#*.jpg
 .env
