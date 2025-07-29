@@ -10,7 +10,7 @@ def calculate_statistics(numbers):
     minimum = min(numbers)
     
     # 표준편차 계산
-    variance = sum((x - mean) ** 2 for x in numbers) / len(numbers)
+    variance = sum((x - mean) ** 2 for x in numbers) / (len(numbers) - 1)
     std_dev = math.sqrt(variance)
     
     return mean, maximum, minimum, std_dev
