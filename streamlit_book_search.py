@@ -43,7 +43,7 @@ def search_naver_api(endpoint, query, display=50):
     try:
         res = requests.get(url, params=payload, headers=headers)
         res.raise_for_status()  # 에러 발생 시 예외 처리
-        return res.json().get('items', [])
+        return res.json().get('items', []) #res.json()['items'] 이 코드보다 더 나은 방식
     except requests.exceptions.RequestException as e:
         st.error(f"API 요청 중 오류가 발생했습니다: {e}")
         return []
@@ -66,6 +66,7 @@ def filter_and_sort_books(df, min_discount=20000):
         DataFrame: 필터링 및 정렬된 결과
     """
     if df.empty:
+        # empty 한 DataFrame 객체를 반환
         return pd.DataFrame()
     
     # discount 열이 문자열일 경우 숫자로 변환
@@ -90,7 +91,7 @@ def filter_books_by_publisher(df, publisher_name):
     if df.empty or publisher_name == "":
         return pd.DataFrame()
     
-    # 컬럼 목록 필터링 ('image'와 'description' 제외)
+    # 컬럼 목록 필터링 ('image'와 'description' 제외) ['title','author'...]
     columns_to_show = [col for col in df.columns if col not in ['image', 'description']]
     
     return (
@@ -139,6 +140,7 @@ if save_button and st.session_state.search_results:
 with tab1:
     if not st.session_state.books_df.empty:
         st.write("전체 검색 결과")
+        # st.dataframe()에서 use_container_width=True를 설정하면 데이터프레임이 Streamlit 컨테이너의 전체 너비에 맞게 자동 확장됩니다.
         st.dataframe(st.session_state.books_df, use_container_width=True)
     else:
         st.info("검색 결과가 없습니다. 검색 버튼을 클릭하여 결과를 불러오세요.")
